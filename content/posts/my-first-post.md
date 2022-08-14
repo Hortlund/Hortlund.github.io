@@ -5,3 +5,7 @@ draft: false
 ---
 
 # I think Actions works now?
+
+Yes they are! Dont know if i did everything right but will check on it more later.
+
+Still setting everything up.
