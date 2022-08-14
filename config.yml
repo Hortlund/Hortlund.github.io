@@ -1,0 +1,20 @@
+baseURL: 'http://example.org/'
+languageCode: en-us
+title: Cloudbot
+theme: PaperMod
+
+params:
+    ShowReadingTime: true
+    homeInfoParams:
+        Title: Hi there, I'm Andreas Hortlund
+        Content: Software Engineer, DevOps, Security
+
+    socialIcons: # optional
+        - name: "Github"
+          url: "https://github.com/Hortlund"
+        - name: "Linkedin"
+          url: "https://se.linkedin.com/andreas-hortlund-245482121"
+    ShowToc: true
+    ShowCodeCopyButtons: true
+    author: ["Andreas"]
+    ShowPostNavLinks: true
