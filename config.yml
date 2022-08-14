@@ -13,7 +13,7 @@ params:
         - name: "Github"
           url: "https://github.com/Hortlund"
         - name: "Linkedin"
-          url: "https://se.linkedin.com/andreas-hortlund-245482121"
+          url: "https://www.linkedin.com/in/andreas-hortlund-245482121/"
     ShowToc: true
     ShowCodeCopyButtons: true
     author: ["Andreas"]
