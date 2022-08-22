@@ -3,18 +3,78 @@ languageCode: en-us
 title: Cloudbot
 theme: PaperMod
   #f
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
 params:
-    ShowReadingTime: true
-    homeInfoParams:
-        Title: Hi there, I'm Andreas Hortlund
-        Content: Software Engineer, DevOps, Security
+    profileMode:
+        enabled: true
+        title: "Andreas Hortlund" # optional default will be site title
+        subtitle: "Software Engineer"
+        imageUrl: "images/me.jpg" # optional
+        imageTitle: "Picture of me" # optional
+        imageWidth: 120 # custom size
+        imageHeight: 120 # custom size
+        buttons:
+            - name: Posts
+              url: "/posts"
+            - name: Thesis
+              url: "https://kau.diva-portal.org/smash/get/diva2:1564706/FULLTEXT01.pdf"
 
     socialIcons: # optional
         - name: "Github"
           url: "https://github.com/Hortlund"
         - name: "Linkedin"
           url: "https://www.linkedin.com/in/andreas-hortlund-245482121/"
+
+    ShowReadingTime: true
+      #homeInfoParams:
+      #Title: Hi there, I'm Andreas Hortlund
+      #Content: Software Engineer
+    ShowBreadCrumbs: true
+    ShowShareButtons: true
+    
+      #socialIcons: # optional
+      # - name: "Github"
+      #   url: "https://github.com/Hortlund"
+      # - name: "Linkedin"
+      #   url: "https://www.linkedin.com/in/andreas-hortlund-245482121/"
     ShowToc: true
     ShowCodeCopyButtons: true
     author: ["Andreas"]
     ShowPostNavLinks: true
+    
+menu:
+  main:
+    - identifier: Posts
+      name: Posts
+      url: /posts/
+      weight: 1
+    - identifier: About
+      name: About
+      url: /about/
+      weight: 5
+    - identifier: Search
+      name: Search
+      url: /search/
+      weight: 5
+    - identifier: Categories
+      name: Categories
+      url: /categories/
+      weight: 10
+    - identifier: Tags
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: Archive
+      name: Archive
+      url: /archive/
+      weight: 25
+    - identifier: Thesis
+      name: Thesis
+      url: https://kau.diva-portal.org/smash/get/diva2:1564706/FULLTEXT01.pdf
+      weight: 30
