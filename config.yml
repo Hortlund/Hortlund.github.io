@@ -50,10 +50,10 @@ params:
     
 menu:
   main:
-    - identifier: Posts
-      name: Posts
-      url: /posts/
-      weight: 1
+    #- identifier: Posts
+    # name: Posts
+    # url: /posts/
+    # weight: 1
     - identifier: About
       name: About
       url: /about/
@@ -62,19 +62,19 @@ menu:
       name: Search
       url: /search/
       weight: 5
-    - identifier: Categories
-      name: Categories
-      url: /categories/
-      weight: 10
+        #- identifier: Categories
+        #name: Categories
+        #url: /categories/
+        #weight: 10
     - identifier: Tags
       name: Tags
       url: /tags/
       weight: 20
-    - identifier: Archive
-      name: Archive
-      url: /archive/
-      weight: 25
-    - identifier: Thesis
-      name: Thesis
-      url: https://kau.diva-portal.org/smash/get/diva2:1564706/FULLTEXT01.pdf
-      weight: 30
+        #- identifier: Archive
+        #name: Archive
+        #url: /archive/
+        #weight: 25
+        #    - identifier: Thesis
+        #name: Thesis
+        #url: https://kau.diva-portal.org/smash/get/diva2:1564706/FULLTEXT01.pdf
+        #weight: 30
