@@ -17,8 +17,8 @@ params:
         subtitle: "Software Engineer"
         imageUrl: "images/me.jpg" # optional
         imageTitle: "Picture of me" # optional
-        imageWidth: 120 # custom size
-        imageHeight: 120 # custom size
+        #imageWidth: 120 # custom size
+        #imageHeight: 120 # custom size
         buttons:
             - name: Posts
               url: "/posts"
