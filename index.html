@@ -60,9 +60,11 @@
       background-size: 400%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradientAnimation 2s infinite, flash 0.5s infinite alternate;
+      animation: gradientAnimation 10s infinite linear; /* Continuous color shift */
       position: relative;
       z-index: 500;
+      transition: opacity 1s ease, transform 1s ease; /* Smooth fade/slide transition */
+      opacity: 1;
     }
 
     /* Animation for the gradient effect */
@@ -141,11 +143,43 @@
     const icon = document.getElementById('icon');
     const playButton = document.getElementById('playButton');
     const backgroundMusic = document.getElementById('backgroundMusic');
+    const textElement = document.getElementById('flashingText');
 
     let x = 100, y = 100;
     let dx = 2, dy = 2;
     const width = 300; // Fixed width of the glass
     const height = 600; // Fixed height of the glass
+
+        // List of meme-worthy texts
+    const texts = [
+      "Fuck it we ball",
+      "Alcohol maxu ~",
+      "Bulle",
+      "Länge har vi väntat",
+      "やばい",
+      "Här är du, och här är jag",
+      "Fullas"
+    ];
+
+    let currentTextIndex = 0;
+
+    // Function to update text with smooth transition
+    function updateText() {
+      currentTextIndex = (currentTextIndex + 1) % texts.length;
+
+      // Add smooth fade-out and slide-left transition
+      textElement.style.opacity = "0";
+      textElement.style.transform = "translateX(-20px)";
+
+      setTimeout(() => {
+        textElement.textContent = texts[currentTextIndex]; // Change text
+        textElement.style.transform = "translateX(0px)"; // Slide back
+        textElement.style.opacity = "1"; // Fade back in
+      }, 500); // Delay for fade-out
+    }
+
+    // Rotate the text every 5 seconds for a relaxed effect
+    setInterval(updateText, 5000);
 
     function moveIcon() {
       const winWidth = window.innerWidth;
