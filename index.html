@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Highball Drink with Music and Flashing Text</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      flex-direction: column;
+    }
+
+    #icon {
+      position: absolute;
+      width: 300px; /* Fixed size for glass */
+      height: 600px; /* Maintain aspect ratio */
+    }
+
+    #playButton, #aboutLink {
+      background-color: #f39c12;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    #playButton {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+
+    #aboutLink {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+
+    #flashingText {
+      font-size: 8vw; /* Responsive text size */
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(90deg, #ff4d4d, #ffcc00, #33cc33, #3399ff, #ff66ff);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientAnimation 2s infinite, flash 0.5s infinite alternate;
+      position: relative;
+      z-index: 500;
+    }
+
+    /* Animation for the gradient effect */
+    @keyframes gradientAnimation {
+      0% { background-position: 0%; }
+      100% { background-position: 100%; }
+    }
+
+    /* Animation for flashing effect */
+    @keyframes flash {
+      0% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
+    /* Media query for smaller mobile devices */
+    @media (max-width: 600px) {
+      #icon {
+        width: 50vw; /* Slightly bigger for smaller screens */
+        max-height: 60vh;
+      }
+      #flashingText {
+        font-size: 10vw; /* Bigger text on small screens */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Text in the center of the page with flashing and gradient color -->
+  <div id="flashingText">Fuck it we ball</div>
+
+  <!-- Inline SVG for the more realistic and larger highball drink -->
+  <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 300">
+    <!-- Glass -->
+    <rect x="20" y="10" width="60" height="280" rx="10" ry="10" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="rgba(255, 255, 255, 0.1)" />
+
+    <!-- Liquid with gradient (orange whiskey) -->
+    <defs>
+      <linearGradient id="whiskeyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect x="20" y="140" width="60" height="150" rx="8" ry="8" fill="url(#whiskeyGradient)" />
+    
+    <!-- Ice cubes -->
+    <rect x="28" y="40" width="20" height="20" rx="4" ry="4" fill="#e0e0e0" stroke="#bbb" stroke-width="1" />
+    <rect x="50" y="80" width="20" height="20" rx="4" ry="4" fill="#e0e0e0" stroke="#bbb" stroke-width="1" />
+    
+    <!-- Bubbles -->
+    <circle cx="40" cy="160" r="3" fill="#fff" opacity="0.5" />
+    <circle cx="55" cy="170" r="4" fill="#fff" opacity="0.5" />
+    <circle cx="45" cy="190" r="3" fill="#fff" opacity="0.5" />
+    
+    <!-- Reflection on glass -->
+    <rect x="23" y="20" width="4" height="260" fill="white" opacity="0.2" />
+    
+    <!-- Straw -->
+    <rect x="65" y="0" width="6" height="50" fill="#ff4d4d" />
+  </svg>
+
+  <!-- Play/Pause Music Button -->
+  <button id="playButton">Play Music</button>
+
+  <!-- About Me Link -->
+  <a id="aboutLink" href="https://github.com/Hortlund">About Me</a>
+
+  <!-- Audio element to play music -->
+  <audio id="backgroundMusic" loop>
+    <source src="Flying High.wav" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const icon = document.getElementById('icon');
+    const playButton = document.getElementById('playButton');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    let x = 100, y = 100;
+    let dx = 2, dy = 2;
+    const width = 300; // Fixed width of the glass
+    const height = 600; // Fixed height of the glass
+
+    function moveIcon() {
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+
+      // Move the icon
+      x += dx;
+      y += dy;
+
+      // Check for bouncing on the edges
+      if (x + width > winWidth || x < 0) {
+        dx = -dx; // Reverse direction on horizontal bounds
+      }
+      if (y + height > winHeight || y < 0) {
+        dy = -dy; // Reverse direction on vertical bounds
+      }
+
+      // Apply new position
+      icon.style.left = x + 'px';
+      icon.style.top = y + 'px';
+
+      requestAnimationFrame(moveIcon); // Continue the animation
+    }
+
+    // Start moving the icon automatically when the page loads
+    window.onload = function() {
+      moveIcon(); // Start animation
+    };
+
+    // Toggle music play/pause
+    let isPlaying = false;
+    playButton.addEventListener('click', () => {
+      if (isPlaying) {
+        backgroundMusic.pause(); // Pause the music
+        playButton.textContent = 'Play Music'; // Update button text
+      } else {
+        backgroundMusic.play(); // Play the music
+        playButton.textContent = 'Pause Music'; // Update button text
+      }
+      isPlaying = !isPlaying; // Toggle the playing state
+    });
+  </script>
+</body>
+</html>
