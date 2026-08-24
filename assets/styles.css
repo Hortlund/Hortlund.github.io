@@ -1752,6 +1752,7 @@ main {
   justify-self: end;
   align-self: center;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: clamp(18px, 3vw, 34px);
