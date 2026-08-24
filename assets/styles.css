@@ -3017,7 +3017,8 @@ p,
 
 .chart-rank::before {
   content: "#";
-  margin-right: 0.04em;
+  display: inline-block;
+  margin-right: 0.18em;
   color: var(--cyan);
   font-size: 0.25em;
   vertical-align: top;
@@ -3117,12 +3118,40 @@ p,
 
 .wgj-workout-preview {
   position: relative;
-  padding: clamp(22px, 4vw, 34px);
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: clamp(22px, 4vw, 38px) clamp(18px, 4vw, 34px) 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 26px;
   background: #080e13;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   transform: rotate(1.5deg);
+}
+
+.wgj-workout-preview img {
+  width: min(100%, 330px);
+  max-height: 560px;
+  object-fit: contain;
+  object-position: bottom center;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.42);
+}
+
+.wgj-workout-preview figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 7px 10px;
+  border: 1px solid rgba(124, 227, 239, 0.2);
+  border-radius: 999px;
+  background: rgba(7, 16, 23, 0.88);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
 }
 
 .wgj-preview-topline,
